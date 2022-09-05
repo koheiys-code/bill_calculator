@@ -18,6 +18,4 @@ if lines:
 
     for name, contents in bill_dict.items():
         st.write(name)
-        for content in contents:
-            content = ' '.join(content)
-            st.write('\t'+content)
+        st.dataframe(pd.DataFrame(contents, columns=['目的', '金額']))
