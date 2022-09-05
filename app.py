@@ -22,7 +22,7 @@ if lines:
         df = pd.DataFrame(contents, columns=['目的', '金額'])
         sum_ = df['金額'].sum()
         sum_table[name] = sum_
-        st.write(f'{name} 合計：{sum_}')
+        st.write(f'{name}    合計：{sum_}')
         st.dataframe(df)
 
     df = pd.DataFrame.from_dict(sum_table, orient='index', columns=['合計'])
