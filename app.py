@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -6,5 +8,15 @@ import numpy as np
 
 st.title("払う金額を計算します")
 
-text = st.text_area("'名前、目的、金額'を縦に並べて入力してください")
-st. write(text)
+lines = st.text_area("'名前、目的、金額'を縦に並べて入力してください")
+lines = lines.split(' ')
+bill_dict = defaultdict(list)
+for line in lines:
+    name, purpose, bill = line.split('、')
+    bill_dict[name].append([purpose, bill])
+
+for name, contents in bill_dict.items():
+    st.write(name)
+    for content in contents:
+        content = ' '.join(content)
+        st.write('\t'+content)
