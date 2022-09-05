@@ -34,13 +34,8 @@ if lines:
         tab.dataframe(bill_dict[name])
 
 else:
-    """
-    例：
-    ゴリラ、りんご、300
-    うさぎ、レタス、200
-    パンダ、笹、1000
-    ゴリラ、バナナ、200
-    """
     st.write('例：')
     st.write('ゴリラ、りんご、300')
     st.write('うさぎ、レタス、200')
+    st.write('パンダ、笹、1000')
+    st.write('ゴリラ、バナナ、200')
