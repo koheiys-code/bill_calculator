@@ -8,7 +8,7 @@ st.title("払う金額を計算します")
 
 lines = st.text_area("'名前、内容、金額'を縦に並べて入力してください")
 if lines:
-    lines = lines.split('\n')
+    lines = lines.split()
     bill_dict = defaultdict(list)
     for line in lines:
         name, purpose, bill = line.split('、')
