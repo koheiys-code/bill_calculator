@@ -17,8 +17,13 @@ if lines:
         bill = int(bill)
         bill_dict[name].append([purpose, bill])
 
+    sum_table = {}
     for name, contents in bill_dict.items():
         st.write(name)
         df = pd.DataFrame(contents, columns=['目的', '金額'])
-        st.dataframe(df, 200, 100)
-        st.write(df['金額'].sum())
+        st.dataframe(df)
+        sum_ = df['金額'].sum()
+        st.write(f'合計：{sum_}')
+        sum_table[name] = sum_
+
+    df = pd.DataFrame.from_dict(sum_table, orient='index', columns=['合計'])
