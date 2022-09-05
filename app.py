@@ -18,7 +18,7 @@ if lines:
 
     sum_table = {}
     names = list(bill_dict.keys())
-    for name, tab in st.tabs(names):
+    for name, tab in zip(names, st.tabs(names)):
         contents = bill_dict[name]
         df = pd.DataFrame(contents, columns=['目的', '金額'])
         sum_ = df['金額'].sum()
