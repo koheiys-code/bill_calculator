@@ -31,7 +31,7 @@ if lines:
         subtotal_dict[name] = df['金額'].sum()
 
     subtotal_df =\
-        pd.DataFrame.from_dict(subtotal_dict, orient='index', columns=['合計'])
+        pd.DataFrame.from_dict(subtotal_dict, orient='index', columns=['小計'])
     total = subtotal_df['小計'].sum()
     mean_ = int(subtotal_df['小計'].mean())
     subtotal_df['支払う金額'] = mean_ - subtotal_df['小計']
