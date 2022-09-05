@@ -18,4 +18,6 @@ if lines:
 
     for name, contents in bill_dict.items():
         st.write(name)
-        st.dataframe(pd.DataFrame(contents, columns=['目的', '金額']))
+        df = pd.DataFrame(contents, columns=['目的', '金額'])
+        st.dataframe(df, width=10)
+        st.write(df['金額'].sum())
