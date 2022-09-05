@@ -19,14 +19,15 @@ if lines:
 
     sum_table = {}
     for name, contents in bill_dict.items():
-        st.write(name)
         df = pd.DataFrame(contents, columns=['目的', '金額'])
-        st.dataframe(df)
         sum_ = df['金額'].sum()
-        st.write(f'合計：{sum_}')
         sum_table[name] = sum_
+        st.write(f'{name} 合計：{sum_}')
+        st.dataframe(df)
 
     df = pd.DataFrame.from_dict(sum_table, orient='index', columns=['合計'])
     mean_ = df['合計'].mean()
+    mean_ = int(mean_)
     df['支払う金額'] = df['合計'] - mean_
+    st.write(f'一人当たり{mean_}')
     st.dataframe(df)
