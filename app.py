@@ -14,10 +14,11 @@ if lines:
     bill_dict = defaultdict(list)
     for line in lines:
         name, purpose, bill = line.split('、')
+        bill = int(bill)
         bill_dict[name].append([purpose, bill])
 
     for name, contents in bill_dict.items():
         st.write(name)
         df = pd.DataFrame(contents, columns=['目的', '金額'])
-        st.dataframe(df, width=400)
+        st.dataframe(df, width=1000)
         st.write(df['金額'].sum())
