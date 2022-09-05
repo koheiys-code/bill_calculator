@@ -35,7 +35,6 @@ if lines:
         tab.dataframe(bill_dict[name])
 
 else:
-    st.write('#内訳')
     st.write('例：')
     st.write('ゴリラ、りんご、300')
     st.write('うさぎ、レタス、200')
