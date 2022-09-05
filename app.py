@@ -1,3 +1,12 @@
+"""
+[name] app.py
+[purpose] calculate how much you will pay per person.
+[reference]
+    https://docs.streamlit.io/library/api-reference/widgets/st.text_area
+    https://docs.streamlit.io/library/api-reference/layout/st.tabs
+
+written by Kohei YOSHIDA, 2022/9/6
+"""
 from collections import defaultdict
 
 import streamlit as st
