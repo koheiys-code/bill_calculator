@@ -25,10 +25,17 @@ if lines:
     mean_ = sum_df['合計'].mean()
     mean_ = int(mean_)
     sum_df['支払う金額'] = sum_df['合計'] - mean_
-    st.write(f'一人当たり{mean_}')
+    st.write(f'一人当たり：{mean_}')
     st.dataframe(sum_df)
 
     names = list(bill_dict.keys())
     for name, tab in zip(names, st.tabs(names)):
         tab.write(f'合計：{sum_dict[name]}')
         tab.dataframe(bill_dict[name])
+
+else:
+    "例："
+    "よしこ、車、300"
+    "れーた、家、200"
+    "河村、山、1000"
+    "よしこ、枕、200"
