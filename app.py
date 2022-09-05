@@ -13,6 +13,7 @@ if lines:
     lines = lines.split(' ')
     bill_dict = defaultdict(list)
     for line in lines:
+        st.write(line)
         name, purpose, bill = line.split('、')
         bill_dict[name].append([purpose, bill])
 
