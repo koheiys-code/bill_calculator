@@ -27,3 +27,6 @@ if lines:
         sum_table[name] = sum_
 
     df = pd.DataFrame.from_dict(sum_table, orient='index', columns=['合計'])
+    mean_ = df['合計'].mean()
+    df['支払う金額'] = df['合計'] - mean_
+    st.dataframe(df)
