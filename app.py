@@ -24,23 +24,24 @@ if lines:
         bill = int(bill)
         bill_dict[name].append([purpose, bill])
 
-    sum_dict = {}
+    subtotal_dict = {}
     for name, contents in bill_dict.items():
         df = pd.DataFrame(contents, columns=['内容', '金額'])
         bill_dict[name] = df
-        sum_dict[name] = df['金額'].sum()
+        subtotal_dict[name] = df['金額'].sum()
 
-    sum_df = pd.DataFrame.from_dict(sum_dict, orient='index', columns=['合計'])
-    total = sum_df['合計'].sum()
-    mean_ = int(sum_df['合計'].mean())
-    sum_df['支払う金額'] = mean_ - sum_df['合計']
+    subtotal_df =\
+        pd.DataFrame.from_dict(subtotal_dict, orient='index', columns=['合計'])
+    total = subtotal_df['小計'].sum()
+    mean_ = int(subtotal_df['小計'].mean())
+    subtotal_df['支払う金額'] = mean_ - subtotal_df['小計']
     st.write(f'全員の合計：{total}')
     st.write(f'一人当たり：{mean_}')
-    st.dataframe(sum_df)
+    st.dataframe(subtotal_df)
 
     names = list(bill_dict.keys())
     for name, tab in zip(names, st.tabs(names)):
-        tab.write(f'合計：{sum_dict[name]}')
+        tab.write(f'合計：{subtotal_dict[name]}')
         tab.dataframe(bill_dict[name])
 
 else:
