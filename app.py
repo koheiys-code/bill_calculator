@@ -11,7 +11,7 @@ st.title("払う金額を計算します")
 lines = st.text_area("'名前、目的、金額'を縦に並べて入力してください")
 if lines:
     st.write(lines)
-    for line in lines.split(' '):
+    for line in lines.split('\n'):
         st.write('###')
         st.write(line)
         st.write('###')
