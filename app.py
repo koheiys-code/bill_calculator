@@ -18,16 +18,42 @@ if lines:
         bill_dict[name].append([purpose, bill])
 
     sum_table = {}
-    for name, contents in bill_dict.items():
+    names = list(bill_dict.keys())
+    for name, tab in st.tabs(names):
+        contents = bill_dict[name]
         df = pd.DataFrame(contents, columns=['目的', '金額'])
         sum_ = df['金額'].sum()
         sum_table[name] = sum_
-        st.write(f'{name}    合計：{sum_}')
-        st.dataframe(df)
+        tab.write(f'{name} 合計：{sum_}')
+        tab.dataframe(df)
 
-    df = pd.DataFrame.from_dict(sum_table, orient='index', columns=['合計'])
-    mean_ = df['合計'].mean()
-    mean_ = int(mean_)
-    df['支払う金額'] = df['合計'] - mean_
-    st.write(f'一人当たり{mean_}')
-    st.dataframe(df)
+    # sum_table = {}
+    # for name, contents in bill_dict.items():
+    #     df = pd.DataFrame(contents, columns=['目的', '金額'])
+    #     sum_ = df['金額'].sum()
+    #     sum_table[name] = sum_
+    #     st.write(f'{name} 合計：{sum_}')
+    #     st.dataframe(df)
+
+    # df = pd.DataFrame.from_dict(sum_table, orient='index', columns=['合計'])
+    # mean_ = df['合計'].mean()
+    # mean_ = int(mean_)
+    # df['支払う金額'] = df['合計'] - mean_
+    # st.write(f'一人当たり{mean_}')
+    # st.dataframe(df)
+
+
+    # sum_table = {}
+    # for name, contents in bill_dict.items():
+    #     df = pd.DataFrame(contents, columns=['目的', '金額'])
+    #     sum_ = df['金額'].sum()
+    #     sum_table[name] = sum_
+    #     st.write(f'{name} 合計：{sum_}')
+    #     st.dataframe(df)
+
+    # df = pd.DataFrame.from_dict(sum_table, orient='index', columns=['合計'])
+    # mean_ = df['合計'].mean()
+    # mean_ = int(mean_)
+    # df['支払う金額'] = df['合計'] - mean_
+    # st.write(f'一人当たり{mean_}')
+    # st.dataframe(df)
