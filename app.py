@@ -9,7 +9,7 @@ import numpy as np
 st.title("払う金額を計算します")
 
 lines = st.text_area("'名前、目的、金額'を縦に並べて入力してください")
-if lines is not None:
+if lines:
     lines = lines.split(' ')
     bill_dict = defaultdict(list)
     for line in lines:
