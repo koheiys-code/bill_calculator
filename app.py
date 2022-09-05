@@ -41,7 +41,7 @@ if lines:
 
     names = list(bill_dict.keys())
     for name, tab in zip(names, st.tabs(names)):
-        tab.write(f'合計：{subtotal_dict[name]}')
+        tab.write(f'小計：{subtotal_dict[name]}')
         tab.dataframe(bill_dict[name])
 
 else:
