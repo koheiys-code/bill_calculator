@@ -19,5 +19,5 @@ if lines:
     for name, contents in bill_dict.items():
         st.write(name)
         df = pd.DataFrame(contents, columns=['目的', '金額'])
-        st.dataframe(df, width=10)
+        st.dataframe(df, width=400)
         st.write(df['金額'].sum())
