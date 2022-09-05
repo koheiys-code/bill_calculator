@@ -2,7 +2,6 @@ from collections import defaultdict
 
 import streamlit as st
 import pandas as pd
-# from matplotlib import pyplot as plt
 
 
 st.title("払う金額を計算します")
@@ -23,13 +22,13 @@ if lines:
         sum_dict[name] = df['金額'].sum()
 
     sum_df = pd.DataFrame.from_dict(sum_dict, orient='index', columns=['合計'])
-    mean_ = df['合計'].mean()
+    mean_ = sum_df['合計'].mean()
     mean_ = int(mean_)
-    df['支払う金額'] = df['合計'] - mean_
+    sum_df['支払う金額'] = sum_df['合計'] - mean_
     st.write(f'一人当たり{mean_}')
-    st.dataframe(df)
+    st.dataframe(sum_df)
 
     names = list(bill_dict.keys())
     for name, tab in zip(names, st.tabs(names)):
         tab.write(f'合計：{sum_dict[name]}')
-        tab.dataframe(df)
+        tab.dataframe(bill_dict[name])
