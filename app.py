@@ -22,9 +22,10 @@ if lines:
         sum_dict[name] = df['金額'].sum()
 
     sum_df = pd.DataFrame.from_dict(sum_dict, orient='index', columns=['合計'])
-    mean_ = sum_df['合計'].mean()
-    mean_ = int(mean_)
+    total = sum_df['合計'].sum()
+    mean_ = int(sum_df['合計'].mean())
     sum_df['支払う金額'] = sum_df['合計'] - mean_
+    st.write(f'全員の合計：{total}')
     st.write(f'一人当たり：{mean_}')
     st.dataframe(sum_df)
 
