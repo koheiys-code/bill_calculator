@@ -6,7 +6,7 @@ import pandas as pd
 
 st.title("払う金額を計算します")
 
-lines = st.text_area("'名前、目的、金額'を縦に並べて入力してください")
+lines = st.text_area("'名前、内容、金額'を縦に並べて入力してください")
 if lines:
     lines = lines.split('\n')
     bill_dict = defaultdict(list)
@@ -17,7 +17,7 @@ if lines:
 
     sum_dict = {}
     for name, contents in bill_dict.items():
-        df = pd.DataFrame(contents, columns=['目的', '金額'])
+        df = pd.DataFrame(contents, columns=['内容', '金額'])
         bill_dict[name] = df
         sum_dict[name] = df['金額'].sum()
 
@@ -41,3 +41,6 @@ else:
     パンダ、笹、1000
     ゴリラ、バナナ、200
     """
+    st.write('例：')
+    st.write('ゴリラ、りんご、300')
+    st.write('うさぎ、レタス、200')
