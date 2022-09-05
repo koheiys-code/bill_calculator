@@ -15,20 +15,20 @@ if lines:
         bill = int(bill)
         bill_dict[name].append([purpose, bill])
 
-    sum_dict = {}
-    for name, contents in bill_dict.items():
-        df = pd.DataFrame(contents, columns=['目的', '金額'])
-        bill_dict[name] = df
-        sum_dict[name] = df['金額'].sum()
+    # sum_dict = {}
+    # for name, contents in bill_dict.items():
+    #     df = pd.DataFrame(contents, columns=['目的', '金額'])
+    #     bill_dict[name] = df
+    #     sum_dict[name] = df['金額'].sum()
 
-    sum_df = pd.DataFrame.from_dict(sum_dict, orient='index', columns=['合計'])
-    mean_ = sum_df['合計'].mean()
-    mean_ = int(mean_)
-    sum_df['支払う金額'] = sum_df['合計'] - mean_
-    st.write(f'一人当たり{mean_}')
-    st.dataframe(sum_df)
+    # sum_df = pd.DataFrame.from_dict(sum_dict, orient='index', columns=['合計'])
+    # mean_ = sum_df['合計'].mean()
+    # mean_ = int(mean_)
+    # sum_df['支払う金額'] = sum_df['合計'] - mean_
+    # st.write(f'一人当たり{mean_}')
+    # st.dataframe(sum_df)
 
-    names = list(bill_dict.keys())
-    for name, tab in zip(names, st.tabs(names)):
-        tab.write(f'合計：{sum_dict[name]}')
-        tab.dataframe(bill_dict[name])
+    # names = list(bill_dict.keys())
+    # for name, tab in zip(names, st.tabs(names)):
+    #     tab.write(f'合計：{sum_dict[name]}')
+    #     tab.dataframe(bill_dict[name])
