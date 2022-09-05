@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 
 
 st.title('散布図を表示させてください。')
@@ -25,15 +25,15 @@ if uploaded_file is not None:
     cov_XY = np.cov(arr_X[0], arr_Y[0], ddof=0)  # 分散共分散行列
     cor_XY = cov_XY[0][1]/(np.sqrt(cov_XY[0][0])*np.sqrt(cov_XY[1][1]))  # 相関係数
 
-    st.write('## 散布図')
-    fig = plt.figure(figsize=(12, 12))
-    ax = plt.axes()
-    plt.xlabel('X', fontsize=18)
-    plt.ylabel('Y', fontsize=18)
-    plt.tick_params(labelsize=18)
-    plt.tight_layout()
-    plt.scatter(arr_X, arr_Y)
-    st.pyplot(fig)
+    # st.write('## 散布図')
+    # fig = plt.figure(figsize=(12, 12))
+    # ax = plt.axes()
+    # plt.xlabel('X', fontsize=18)
+    # plt.ylabel('Y', fontsize=18)
+    # plt.tick_params(labelsize=18)
+    # plt.tight_layout()
+    # plt.scatter(arr_X, arr_Y)
+    # st.pyplot(fig)
 
     st.write("## 分散・共分散・相関係数")
 
