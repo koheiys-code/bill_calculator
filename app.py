@@ -13,12 +13,16 @@ import streamlit as st
 import pandas as pd
 
 
-st.title("払う金額を計算します")
+st.title("払った金額を計算します")
 
+number = st.slider('人数を入れてください', 10, 20, value=18)
+per_pool = st.text_input('一人当たりのプールの金額を入れてください')
 lines = st.text_area("'名前、内容、金額'を縦に並べて入力してください")
-if lines:
+if number and per_pool and lines:
+    pool = int(number) * int(per_pool)
     lines = lines.split()
     bill_dict = defaultdict(list)
+    bill_dict['プール'] = []
     for line in lines:
         name, purpose, bill = line.split('、')
         bill = int(bill)
@@ -32,6 +36,8 @@ if lines:
 
     subtotal_df =\
         pd.DataFrame.from_dict(subtotal_dict, orient='index', columns=['小計'])
+    rest_pool = pool - subtotal_df['小計'].sum()
+
     total = subtotal_df['小計'].sum()
     mean_ = int(subtotal_df['小計'].mean())
     subtotal_df['支払う金額'] = mean_ - subtotal_df['小計']
