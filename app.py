@@ -13,13 +13,13 @@ import streamlit as st
 import pandas as pd
 
 
-st.title("払った金額を計算します")
+st.title("払い戻す金額を計算します")
 
 left, right = st.columns(2)
-number = left.slider('人数を入れてください', 1, 20, value=18)
-per_pool = right.text_input('一人当たりのプールの金額を入れてください')
+number = left.slider('人数を入れてください', 1, 30, value=18)
+per_pool = right.text_input('一人当たりのプールの金額を入れてください', value=20000)
 
-lines = st.text_area("'名前、内容、金額'を縦に並べて入力してください")
+lines = st.text_area("立て替えた人の'名前、内容、金額'を縦に並べて入力してください")
 
 if number and per_pool and lines:
     pool = int(number) * int(per_pool)
@@ -54,7 +54,8 @@ if number and per_pool and lines:
 
 else:
     st.write('例：')
-    st.write('ゴリラ、りんご、300')
-    st.write('うさぎ、レタス、200')
+    st.write('プール、車代、30000')
+    st.write('ゴリラ、りんご、4000')
+    st.write('うさぎ、レタス、2000')
     st.write('パンダ、笹、1000')
-    st.write('ゴリラ、バナナ、200')
+    st.write('ゴリラ、バナナ、2000')
