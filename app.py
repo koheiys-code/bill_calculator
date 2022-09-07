@@ -17,7 +17,7 @@ st.title("払い戻す金額を計算します")
 
 left, right = st.columns(2)
 number = left.slider('人数を入れてください', 1, 30, value=18)
-per_pool = right.text_input('一人当たりのプールの金額を入れてください', value=20000)
+per_pool = right.text_input('一人当たりのプール金額を入れてください', value=20000)
 
 lines = st.text_area("立て替えた人の'名前、内容、金額'を縦に並べて入力してください")
 
@@ -43,6 +43,7 @@ if number and per_pool and lines:
     return_pool = rest_pool // number
     subtotal_df['払い戻し金額'] = subtotal_df['小計'] + return_pool
     subtotal_df.loc['プール', '払い戻し金額'] = 0
+    st.write(f'プールされた金額：{pool}')
     st.write(f'プールに残った金額：{rest_pool}')
     st.write(f'立て替えていない人：{return_pool}')
     st.dataframe(subtotal_df)
