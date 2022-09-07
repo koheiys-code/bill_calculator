@@ -2,10 +2,13 @@
 [name] app.py
 [purpose] calculate how much you will pay per person.
 [reference]
+    https://docs.streamlit.io/library/api-reference/layout/st.columns
+    https://docs.streamlit.io/library/api-reference/widgets/st.slider
+    https://docs.streamlit.io/library/api-reference/widgets/st.text_input
     https://docs.streamlit.io/library/api-reference/widgets/st.text_area
     https://docs.streamlit.io/library/api-reference/layout/st.tabs
 
-written by Kohei YOSHIDA, 2022/9/6
+written by Kohei YOSHIDA, 2022/9/7
 """
 from collections import defaultdict
 
@@ -42,11 +45,10 @@ if number and per_pool and lines:
     rest_pool = pool - subtotal_df['小計'].sum()
     return_pool = rest_pool // number
     subtotal_df['払い戻し金額'] = subtotal_df['小計'] + return_pool
-    subtotal_df.loc['プール', '払い戻し金額'] = 0
     st.write(f'プールされた金額：{pool}')
-    st.write(f'プールに残った金額：{rest_pool}')
+    st.write(f'プールに残る金額：{rest_pool}')
     st.write(f'立て替えていない人：{return_pool}')
-    st.dataframe(subtotal_df)
+    st.dataframe(subtotal_df.iloc[1:])
 
     names = list(bill_dict.keys())
     for name, tab in zip(names, st.tabs(names)):
