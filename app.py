@@ -37,12 +37,10 @@ if number and per_pool and lines:
     subtotal_df =\
         pd.DataFrame.from_dict(subtotal_dict, orient='index', columns=['小計'])
     rest_pool = pool - subtotal_df['小計'].sum()
-
-    total = subtotal_df['小計'].sum()
-    mean_ = int(subtotal_df['小計'].mean())
-    subtotal_df['支払う金額'] = mean_ - subtotal_df['小計']
-    st.write(f'全員の合計：{total}')
-    st.write(f'一人当たり：{mean_}')
+    return_pool = rest_pool // number
+    subtotal_df['払い戻し金額'] = subtotal_df['小計'] + return_pool
+    subtotal_df.loc['プール', '払い戻し金額'] = 0
+    st.write(f'立て替えていない人：{return_pool}')
     st.dataframe(subtotal_df)
 
     names = list(bill_dict.keys())
