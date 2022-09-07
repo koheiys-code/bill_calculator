@@ -57,8 +57,8 @@ if number and per_pool and lines:
 
 else:
     st.write('例：')
-    st.write('プール、車代、30000')
     st.write('ゴリラ、りんご、4000')
     st.write('うさぎ、レタス、2000')
     st.write('パンダ、笹、1000')
     st.write('ゴリラ、バナナ、2000')
+    st.write('プール、車代、30000')
