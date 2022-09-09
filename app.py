@@ -8,7 +8,7 @@
     https://docs.streamlit.io/library/api-reference/widgets/st.text_area
     https://docs.streamlit.io/library/api-reference/layout/st.tabs
 
-written by Kohei YOSHIDA, 2022/9/7
+written by Kohei YOSHIDA, 2022/9/10
 """
 from collections import defaultdict
 
