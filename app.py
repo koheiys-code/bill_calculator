@@ -19,7 +19,7 @@ import pandas as pd
 st.title("払い戻す金額を計算します")
 
 left, right = st.columns(2)
-number = left.slider('人数を入れてください', 1, 30, value=18)
+number = left.slider('人数を入れてください', 1, 30, value=17)
 per_pool = right.text_input('一人当たりのプール金額を入れてください', value=20000)
 
 lines = st.text_area("立て替えた人の'名前、内容、金額'を縦に並べて入力してください")
